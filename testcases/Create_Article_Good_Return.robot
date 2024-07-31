@@ -29,6 +29,7 @@ Create Article
     ...    ${weight_7_4}    ${width_7_5}    ${long_7_5}    ${high_7_5}    ${weight_7_5}    ${im_group}    
     Wait And Click Element    //p[text()='จัดการสินค้า']
     Wait And Click Element    //p[text()='จัดการข้อมูลสินค้า']
+    Debug
     Wait And Wait Until Element Is Visible    //div[@class="dx-datagrid-text-content"][text()='วันที่สร้าง']
     Wait And Click Element    //*[text()=' สร้างสินค้าใหม่']/parent::span
     Wait And Wait Until Element Is Visible    //span[@class="MuiTab-wrapper"][text()="Basic data"]
