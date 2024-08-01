@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 Library    DebugLibrary
 Test Setup    Login dohome and click web art(Create)
 Test Template        Create Article 
-Library    DataDriver    file=../resources/clone_article_goodreturnV2.csv  dialect=excel    encoding=utf-8
+Library    DataDriver    file=../resources/clone_article_goodreturnV3.csv  dialect=excel    encoding=utf-8
 Resource    ../keywords/common_art.robot
 Test Teardown    Close All Browsers  
 
@@ -29,14 +29,13 @@ Create Article
     ...    ${weight_7_4}    ${width_7_5}    ${long_7_5}    ${high_7_5}    ${weight_7_5}    ${im_group}    
     Wait And Click Element    //p[text()='จัดการสินค้า']
     Wait And Click Element    //p[text()='จัดการข้อมูลสินค้า']
-    Debug
     Wait And Wait Until Element Is Visible    //div[@class="dx-datagrid-text-content"][text()='วันที่สร้าง']
     Wait And Click Element    //*[text()=' สร้างสินค้าใหม่']/parent::span
     Wait And Wait Until Element Is Visible    //span[@class="MuiTab-wrapper"][text()="Basic data"]
     Wait And Click Element    //input[@name="vendor_no"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="vendor_no"]/following-sibling::div/div/input    ${vendor_no}
-    Wait And Press Keys    //input[contains(@id, '_vendor_no') and starts-with(@id, 'dx_')]    ARROW_DOWN
-    Wait And Press Keys    //input[contains(@id, '_vendor_no') and starts-with(@id, 'dx_')]    ENTER
+    Wait And Press Keys    //input[contains(@id, '_vendor_no') and starts-with(@id, 'dx_')]    \\13
+    Debug
     Wait And Click Element    //input[@name="name_th"]
     Wait And Input Text with Delay     //input[@name="name_th"]    ${name_th}
     Wait And Click Element    //input[@name="name_en"]
@@ -45,34 +44,27 @@ Create Article
     #1. รายละเอียดเกี่ยวกับตัวสินค้า
     Wait And Click Element    //input[@name="article_category"]/following-sibling::div/div/input    #api error 500
     Wait And Input Text with Delay     //input[@name="article_category"]/following-sibling::div/div/input    ${article_category}
-    Wait And Press Keys    //input[@name="article_category"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="article_category"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="article_category"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //input[@name="merchandise_category2"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="merchandise_category2"]/following-sibling::div/div/input    ${merchandise_category2}
-    Wait And Press Keys    //input[@name="merchandise_category2"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="merchandise_category2"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="merchandise_category2"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //input[@name="merchandise_category"]/following-sibling::div/div/input
-    Wait And Input Text with Delay     //input[@name="merchandise_category"]/following-sibling::div/div/input    ${merchandise_category}
-    Wait And Press Keys    //input[@name="merchandise_category"]/following-sibling::div/div/input    ARROW_DOWN    
-    Wait And Press Keys    //input[@name="merchandise_category"]/following-sibling::div/div/input    ENTER
+    Wait And Input Text with Delay     //input[@name="merchandise_category"]/following-sibling::div/div/input    ${merchandise_category}    
+    Wait And Press Keys    //input[@name="merchandise_category"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //input[@name="division"]/following-sibling::div/div/input
     Wait And Clear Element Text    //input[@name="division"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="division"]/following-sibling::div/div/input    ${division}
-    Wait And Press Keys    //input[@name="division"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="division"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="division"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //input[@name="artl_statistics_grp"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="artl_statistics_grp"]/following-sibling::div/div/input    ${artl_statistics_grp}
-    Wait And Press Keys    //input[@name="artl_statistics_grp"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="artl_statistics_grp"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="artl_statistics_grp"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //input[@name="astmt_list_type"]/following-sibling::div/div/input
     Wait And Clear Element Text    //input[@name="astmt_list_type"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="astmt_list_type"]/following-sibling::div/div/input    ${astmt_list_type}
-    Wait And Press Keys    //input[@name="astmt_list_type"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="astmt_list_type"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="astmt_list_type"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //input[@name="material_type"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="material_type"]/following-sibling::div/div/input    ${material_type}
-    Wait And Press Keys    //input[@name="material_type"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="material_type"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="material_type"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //select[@name="distr_ch"]/following-sibling::div/div/input
     #เพิ่ม 18/7/67
     Wait And Click Element Ignore Error     //*[text()='${distr_ch_C1}']/preceding-sibling::div/div/div
@@ -88,181 +80,142 @@ Create Article
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='2. ข้อมูลเกี่ยวกับสินค้ามีอายุ']
     Wait And Clear Element Text    //input[@name="valuation_class"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="valuation_class"]/following-sibling::div/div/input    ${valuation_class}
-    Wait And Press Keys    //input[@name="valuation_class"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="valuation_class"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="valuation_class"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="e_comm_name_th"]
     Wait And Input Text with Delay    //input[@name="e_comm_name_th"]    ${name_ecm}
-    Wait And Press Keys    //input[@name="e_comm_name_th"]    ARROW_DOWN
-    Wait And Press Keys    //input[@name="e_comm_name_th"]    ENTER
+    Wait And Press Keys    //input[@name="e_comm_name_th"]    \\13
     Wait And Clear Element Text    //input[@name="search_word"]
     Wait And Input Text with Delay     //input[@name="search_word"]   ${name_search}
-    Wait And Press Keys    //input[@name="search_word"]    ARROW_DOWN
-    Wait And Press Keys    //input[@name="search_word"]    ENTER
+    Wait And Press Keys    //input[@name="search_word"]    \\13
     Wait And Clear Element Text    //input[@name="search_remark"]
     Wait And Input Text with Delay     //input[@name="search_remark"]    ${search_remark}
-    Wait And Press Keys    //input[@name="search_remark"]    ARROW_DOWN
-    Wait And Press Keys    //input[@name="search_remark"]    ENTER
+    Wait And Press Keys    //input[@name="search_remark"]    \\13
     Wait And Clear Element Text    //input[@name="product_model"]
     Wait And Input Text with Delay     //input[@name="product_model"]    ${product_model}
-    Wait And Press Keys    //input[@name="product_model"]    ARROW_DOWN
-    Wait And Press Keys    //input[@name="product_model"]    ENTER
+    Wait And Press Keys    //input[@name="product_model"]    \\13
     Wait And Clear Element Text    //input[@name="brand_id"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="brand_id"]/following-sibling::div/div/input    ${brand_id}
-    Wait And Press Keys    //input[@name="brand_id"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="brand_id"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="brand_id"]/following-sibling::div/div/input    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="old_article"]
-    Wait And Input Text with Delay Ignore Error     //input[@name="old_article"]    ${old_article}  
-    Wait And Press Keys Ignore Error    //input[@name="old_article"]    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="old_article"]    ENTER
+    Wait And Input Text with Delay Ignore Error     //input[@name="old_article"]    ${old_article}
+    Wait And Press Keys Ignore Error    //input[@name="old_article"]    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="repack"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="repack"]/following-sibling::div/div/input    ${repack}
-    Wait And Press Keys Ignore Error    //input[@name="repack"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="repack"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="repack"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="product_transform"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="product_transform"]/following-sibling::div/div/input    ${product_transform}
-    Wait And Press Keys    //input[@name="product_transform"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="product_transform"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="product_transform"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="country_of_region"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="country_of_region"]/following-sibling::div/div/input    ${country_of_region}
-    Wait And Press Keys    //input[@name="country_of_region"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="country_of_region"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="country_of_region"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="hb_nonhb"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="hb_nonhb"]/following-sibling::div/div/input    ${hb_nonhb}
-    Wait And Press Keys    //input[@name="hb_nonhb"]/following-sibling::div/div/input    ARROW_DOWN  
-    Wait And Press Keys    //input[@name="hb_nonhb"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="hb_nonhb"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="production"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="production"]/following-sibling::div/div/input    ${production}
-    Wait And Press Keys    //input[@name="production"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="production"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="production"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="tradmark"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="tradmark"]/following-sibling::div/div/input    ${tradmark}
-    Wait And Press Keys    //input[@name="tradmark"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="tradmark"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="tradmark"]/following-sibling::div/div/input    \\13
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='3. ข้อมูลเกี่ยวกับ Indicator สินค้า']
     #2. ข้อมูลเกี่ยวกับสินค้ามีอายุ
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="tot_shelf_life"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="tot_shelf_life"]/following-sibling::div/div/input    ${tot_shelf_life}
-    Wait And Press Keys Ignore Error    //input[@name="tot_shelf_life"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="tot_shelf_life"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="tot_shelf_life"]/following-sibling::div/div/input    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="rem_shelf_life"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="rem_shelf_life"]/following-sibling::div/div/input    ${rem_shelf_life}
-    Wait And Press Keys Ignore Error    //input[@name="rem_shelf_life"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="rem_shelf_life"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="rem_shelf_life"]/following-sibling::div/div/input    \\13
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='4. ข้อมูลเกี่ยวกับกลุ่มจัดซื้อและผู้ดูแลการสั่งซื้อ']
     #3. ข้อมูลเกี่ยวกับ Indicator สินค้า
     Wait And Clear Element Text    //input[@name="product_status"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="product_status"]/following-sibling::div/div/input    ${product_status}
-    Wait And Press Keys    //input[@name="product_status"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="product_status"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="product_status"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="abc_indicator"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="abc_indicator"]/following-sibling::div/div/input    ${abc_indicator}
-    Wait And Press Keys    //input[@name="abc_indicator"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="abc_indicator"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="abc_indicator"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="product_role"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="product_role"]/following-sibling::div/div/input    ${product_role}
-    Wait And Press Keys    //input[@name="product_role"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="product_role"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="product_role"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="product_sub_role"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="product_sub_role"]/following-sibling::div/div/input    ${product_sub_role}
-    Wait And Press Keys    //input[@name="product_sub_role"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="product_sub_role"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="product_sub_role"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="product_trend"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="product_trend"]/following-sibling::div/div/input    ${product_trend}
-    Wait And Press Keys    //input[@name="product_trend"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="product_trend"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="product_trend"]/following-sibling::div/div/input    \\13
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='5. ข้อมูลการจัดหาสต็อกสินค้าภาพรวม']
     #4. ข้อมูลเกี่ยวกับกลุ่มจัดซื้อและผู้ดูแลการสั่งซื้อ
     Wait And Clear Element Text    //input[@name="head_purchaser_group_no"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="head_purchaser_group_no"]/following-sibling::div/div/input    ${head_purchaser_group_no}
-    Wait And Press Keys    //input[@name="head_purchaser_group_no"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="head_purchaser_group_no"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="head_purchaser_group_no"]/following-sibling::div/div/input    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="head_im"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="head_im"]/following-sibling::div/div/input    ${head_im}
-    Wait And Press Keys Ignore Error    //input[@name="head_im"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="head_im"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="head_im"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="purchaser_group_no"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="purchaser_group_no"]/following-sibling::div/div/input    ${purchaser_group_no}
-    Wait And Press Keys    //input[@name="purchaser_group_no"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="purchaser_group_no"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="purchaser_group_no"]/following-sibling::div/div/input    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="import_purchase"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="import_purchase"]/following-sibling::div/div/input    ${import_purchase}
-    Wait And Press Keys Ignore Error    //input[@name="import_purchase"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="import_purchase"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="import_purchase"]/following-sibling::div/div/input    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="im_group"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="im_group"]/following-sibling::div/div/input    ${im_group}
-    Wait And Press Keys Ignore Error    //input[@name="im_group"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="im_group"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="im_group"]/following-sibling::div/div/input    \\13
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='6. หน่วยสินค้า , ขนาด,บาร์โค๊ด รวมแพคกิ้ง']
     #5. ข้อมูลการจัดหาสต็อกสินค้าภาพรวม
     Wait And Clear Element Text    //input[@name="avail_check"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="avail_check"]/following-sibling::div/div/input    ${avail_check}
-    Wait And Press Keys    //input[@name="avail_check"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="avail_check"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="avail_check"]/following-sibling::div/div/input    \\13
     Conditional Wait And Click element    '${Negative_stock}' == 'X'    //*[text()="สินค้าที่สามารถขายได้เมื่อสต็อกติดลบ"]/preceding-sibling::span
     Wait And Clear Element Text    //input[@name="gen_item_cat_grp"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="gen_item_cat_grp"]/following-sibling::div/div/input    ${gen_item_cat_grp}
-    Wait And Press Keys    //input[@name="gen_item_cat_grp"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="gen_item_cat_grp"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="gen_item_cat_grp"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="tax_class"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="tax_class"]/following-sibling::div/div/input    ${tax_class}
-    Wait And Press Keys    //input[@name="tax_class"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="tax_class"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="tax_class"]/following-sibling::div/div/input    \\13
     #เพิ่มใหม่
     Wait And Clear Element Text Ignore Error    //input[@name="serial_number_profile"]/following-sibling::div/div/input
     Wait And Input Text with Delay Ignore Error     //input[@name="serial_number_profile"]/following-sibling::div/div/input    ${serial_number_profile}
-    Wait And Press Keys Ignore Error    //input[@name="serial_number_profile"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys Ignore Error    //input[@name="serial_number_profile"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys Ignore Error    //input[@name="serial_number_profile"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="stor_condition"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="stor_condition"]/following-sibling::div/div/input    ${stor_condition}
-    Wait And Press Keys    //input[@name="stor_condition"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="stor_condition"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="stor_condition"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="loading_group"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="loading_group"]/following-sibling::div/div/input    ${loading_group}
-    Wait And Press Keys    //input[@name="loading_group"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="loading_group"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="loading_group"]/following-sibling::div/div/input    \\13
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']
     Conditional Wait And Click element    '${mark_batch}' == 'X'        //*[text()="สินค้าที่ต้องระบุ batch (Batch management )"]/preceding-sibling::span    #batch
     #6. หน่วยสินค้า , ขนาด,บาร์โค๊ด รวมแพคกิ้ง
     Wait And Scroll Element Into View     //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input
     Wait And Clear Element Text    //input[@name="units_id"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="units_id"]/following-sibling::div/div/input    ${units_id}
-    Wait And Press Keys    //input[@name="units_id"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="units_id"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="units_id"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="rate_unit_base"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="rate_unit_base"]/following-sibling::div/div/input    ${rate_unit_base}
-    Wait And Press Keys    //input[@name="rate_unit_base"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="rate_unit_base"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="rate_unit_base"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="rate_unit_code"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="rate_unit_code"]/following-sibling::div/div/input    ${rate_unit_code}
-    Wait And Press Keys    //input[@name="rate_unit_code"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="rate_unit_code"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="rate_unit_code"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="barcode_no"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="barcode_no"]/following-sibling::div/div/input    ${barcode_no}
-    Wait And Press Keys    //input[@name="barcode_no"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="barcode_no"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="barcode_no"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="width"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="width"]/following-sibling::div/div/input    ${width_6}
-    Wait And Press Keys    //input[@name="width"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="width"]/following-sibling::div/div/input    ENTER 
+    Wait And Press Keys    //input[@name="width"]/following-sibling::div/div/input    \\13 
     Wait And Clear Element Text    //input[@name="long"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="long"]/following-sibling::div/div/input    ${long_6}
-    Wait And Press Keys    //input[@name="long"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="long"]/following-sibling::div/div/input    ENTER  
+    Wait And Press Keys    //input[@name="long"]/following-sibling::div/div/input    \\13  
     Wait And Clear Element Text    //input[@name="high"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="high"]/following-sibling::div/div/input    ${high_6}
-    Wait And Press Keys    //input[@name="high"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="high"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="high"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="weight"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="weight"]/following-sibling::div/div/input    ${weight_6}
-    Wait And Press Keys    //input[@name="weight"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="weight"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="weight"]/following-sibling::div/div/input    \\13
     Wait And Click Element    //span[@class="dx-checkbox-text"][text()='Oun (หน่วยบรรจุในการสั่งซื้อ/เปิด PO)']/preceding-sibling::span    
     Wait And Click Element    //span[@class="dx-checkbox-text"][text()='Sun (หน่วยที่สามารถขายได้ = เบสยูนิต)']/preceding-sibling::span    
     #Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']
@@ -270,223 +223,171 @@ Create Article
     Conditional Wait And Scroll Element Into View    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ${rate_unit_base_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ${units_id_2}    #เพิ่มหน่วยใหม่
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ${rate_unit_code_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ${barcode_no_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ${width_6_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ${long_6_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ${high_6_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'     //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ${weight_6_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='หน่วยที่ ' and text()='2']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    \\13
     #Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']
     Conditional Wait And Click element    '${add_unit3}' == 'X'    //*[text()='6. หน่วยสินค้า , ขนาด,บาร์โค๊ด รวมแพคกิ้ง']/ancestor::div[2]/following-sibling::div/div//*[text()='เพิ่มหน่วย']/parent::button 
     Conditional Wait And Scroll Element Into View    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ${rate_unit_base_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ${units_id_3}    #เพิ่มหน่วยใหม่
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ${rate_unit_code_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ${barcode_no_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ${width_6_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ${long_6_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ${high_6_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'     //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ${weight_6_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='หน่วยที่ ' and text()='3']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    \\13
     #Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']
     Conditional Wait And Click element    '${add_unit4}' == 'X'    //*[text()='6. หน่วยสินค้า , ขนาด,บาร์โค๊ด รวมแพคกิ้ง']/ancestor::div[2]/following-sibling::div/div//*[text()='เพิ่มหน่วย']/parent::button 
     Conditional Wait And Scroll Element Into View    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ${rate_unit_base_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ${units_id_4}    #เพิ่มหน่วยใหม่
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ${rate_unit_code_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ${barcode_no_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ${width_6_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ${long_6_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ${high_6_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'     //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ${weight_6_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='หน่วยที่ ' and text()='4']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    \\13
     #Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']
     Conditional Wait And Click element    '${add_unit5}' == 'X'    //*[text()='6. หน่วยสินค้า , ขนาด,บาร์โค๊ด รวมแพคกิ้ง']/ancestor::div[2]/following-sibling::div/div//*[text()='เพิ่มหน่วย']/parent::button 
     Conditional Wait And Scroll Element Into View    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ${rate_unit_base_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_base"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ${units_id_5}    #เพิ่มหน่วยใหม่
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="units_sale_id"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ${rate_unit_code_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="rate_unit_code"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ${barcode_no_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="barcode_no"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ${width_6_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="width"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ${long_6_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="long"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ${high_6_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'     //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ${weight_6_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='หน่วยที่ ' and text()='5']/parent::div/following-sibling::div//input[@name="weight"]/following-sibling::div//input    \\13
     Wait And Scroll Element Into View    //*[@class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"][text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']
     #7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง
     Wait And Clear Element Text    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input
     Wait And Input Text with Delay     //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input    ${width_7}
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input    ARROW_DOWN
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input    ENTER 
+    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='width']/following-sibling::div//div//input    \\13 
     Wait And Clear Element Text    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='long']/following-sibling::div//div//input
     Wait And Input Text with Delay     //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='long']/following-sibling::div//div//input    ${long_7}
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='long']/following-sibling::div//div//input    ARROW_DOWN
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='long']/following-sibling::div//div//input    ENTER  
+    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='long']/following-sibling::div//div//input    \\13  
     Wait And Clear Element Text    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='high']/following-sibling::div//div//input
     Wait And Input Text with Delay     //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='high']/following-sibling::div//div//input   ${high_7}
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='high']/following-sibling::div//div//input    ARROW_DOWN
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='high']/following-sibling::div//div//input    ENTER
+    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='high']/following-sibling::div//div//input    \\13
     Wait And Clear Element Text    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='weight']/following-sibling::div//div//input
     Wait And Input Text with Delay     //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='weight']/following-sibling::div//div//input    ${weight_7}
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='weight']/following-sibling::div//div//input    ARROW_DOWN
-    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='weight']/following-sibling::div//div//input    ENTER
+    Wait And Press Keys    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//input[@name='weight']/following-sibling::div//div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="width"]/following-sibling::div//input    ${width_7_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="width"]/following-sibling::div//input    ENTER 
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="width"]/following-sibling::div//input    \\13 
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="long"]/following-sibling::div//input    ${long_7_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="long"]/following-sibling::div//input    ENTER  
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="long"]/following-sibling::div//input    \\13  
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="high"]/following-sibling::div//input   ${high_7_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="weight"]/following-sibling::div//input    ${weight_7_2}
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit2}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='2']/parent::div//input[@name="weight"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="width"]/following-sibling::div//input    ${width_7_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="width"]/following-sibling::div//input    ENTER 
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="width"]/following-sibling::div//input    \\13 
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="long"]/following-sibling::div//input    ${long_7_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="long"]/following-sibling::div//input    ENTER  
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="long"]/following-sibling::div//input    \\13  
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="high"]/following-sibling::div//input   ${high_7_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="weight"]/following-sibling::div//input    ${weight_7_3}
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit3}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='3']/parent::div//input[@name="weight"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="width"]/following-sibling::div//input    ${width_7_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="width"]/following-sibling::div//input    ENTER 
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="width"]/following-sibling::div//input    \\13 
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="long"]/following-sibling::div//input    ${long_7_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="long"]/following-sibling::div//input    ENTER  
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="long"]/following-sibling::div//input    \\13  
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="high"]/following-sibling::div//input   ${high_7_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="weight"]/following-sibling::div//input    ${weight_7_4}
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit4}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='4']/parent::div//input[@name="weight"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="width"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="width"]/following-sibling::div//input    ${width_7_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="width"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="width"]/following-sibling::div//input    ENTER 
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="width"]/following-sibling::div//input    \\13 
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="long"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="long"]/following-sibling::div//input    ${long_7_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="long"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="long"]/following-sibling::div//input    ENTER  
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="long"]/following-sibling::div//input    \\13  
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="high"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="high"]/following-sibling::div//input   ${high_7_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="high"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="high"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="high"]/following-sibling::div//input    \\13
     Conditional Wait And Clear Element Text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="weight"]/following-sibling::div//input
     Conditional Wait And Input text    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="weight"]/following-sibling::div//input    ${weight_7_5}
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="weight"]/following-sibling::div//input    ARROW_DOWN
-    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="weight"]/following-sibling::div//input    ENTER
+    Conditional Wait And Press Keys    '${add_unit5}' == 'X'    //*[text()='7. หน่วยสินค้า , ขนาด,บาร์โค๊ด ไม่รวมแพคกิ้ง']/following::div//*[text()='หน่วยที่ ' and text()='5']/parent::div//input[@name="weight"]/following-sibling::div//input    \\13
     #8. ขนาดสินค้าที่ประกอบเสร็จ (เฉพาะสินค้าที่ต้องประกอบ)
     #9. รูปแบบการจัดเรียงและหน่วยที่ต้องการจัดเรียง
     #10. ข้อมูลสินค้าหน่วยคู่ขนาน
@@ -496,8 +397,7 @@ Create Article
     #12. สถานะสินค้า ใน Tab Basic Data
     Wait And Clear Element Text    //input[@name="first_sale_date"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="first_sale_date"]/following-sibling::div/div/input    ${first_sale_date}
-    Wait And Press Keys    //input[@name="first_sale_date"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="first_sale_date"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="first_sale_date"]/following-sibling::div/div/input    \\13
     #13. Attribute หลัก
     #14. คุณสมบัติการรับประกัน บำรุงรักษา
     Wait And Scroll Element Into View    //span[@class="dx-field-item-label-text"][text()='การบำรุงรักษา']
@@ -527,22 +427,18 @@ Create Article
     Wait And Wait Until Element Is Visible    //*[text()="ข้อมูลของ Vendor"]
     Wait And Clear Element Text    //input[@name="lead_time"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="lead_time"]/following-sibling::div/div/input    ${lead_time}
-    Wait And Press Keys    //input[@name="lead_time"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="lead_time"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="lead_time"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="return_defective"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="return_defective"]/following-sibling::div/div/input    ${return_defective}
-    Wait And Press Keys    //input[@name="return_defective"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="return_defective"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="return_defective"]/following-sibling::div/div/input    \\13
     Wait And Scroll Element Into View    //span[@class="dx-field-item-label-text"][text()="หน่วยของราคาทุน (Base Unit)."]
     #ข้อมูลต้นทุนสินค้า
     Wait And Clear Element Text    //input[@name="net_cost_price"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="net_cost_price"]/following-sibling::div/div/input    ${net_cost_price}
-    Wait And Press Keys    //input[@name="net_cost_price"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="net_cost_price"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="net_cost_price"]/following-sibling::div/div/input    \\13
     Wait And Clear Element Text    //input[@name="currency"]/following-sibling::div/div/input
     Wait And Input Text with Delay     //input[@name="currency"]/following-sibling::div/div/input    ${currency}
-    Wait And Press Keys    //input[@name="currency"]/following-sibling::div/div/input    ARROW_DOWN
-    Wait And Press Keys    //input[@name="currency"]/following-sibling::div/div/input    ENTER
+    Wait And Press Keys    //input[@name="currency"]/following-sibling::div/div/input    \\13
     Sleep    3s  
     #Tab Sale
     Wait And Click Element    //*[text()="Sales"]/..

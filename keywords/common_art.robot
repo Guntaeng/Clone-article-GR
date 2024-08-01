@@ -15,7 +15,7 @@ Input Text with Delay
 
 Press Key with Delay 
     [Arguments]    ${locator}    ${text}
-    Press Keys    ${locator}    ${text}    
+    Press Key    ${locator}    ${text}    
     Sleep    1s
 
 Wait And Clear Element Text Ignore Error    #no require     
@@ -32,7 +32,7 @@ Wait And Input Text with Delay Ignore Error     #no require
 
 Wait And Press Keys Ignore Error    #no require
     [Arguments]    ${locator}    ${keys}
-    Run Keyword And Ignore Error    Wait Until Keyword Succeeds    1x    2s    Press Keys    ${locator}    ${keys}
+    Run Keyword And Ignore Error    Wait Until Keyword Succeeds    1x    2s    Press Key    ${locator}    ${keys}
 
 Conditional Wait And Click element
     [Arguments]    ${condition}    ${locator}
@@ -44,7 +44,7 @@ Conditional Wait And Input text
 
 Conditional Wait And Press Keys
     [Arguments]    ${condition}    ${locator}    ${keys}
-    Run Keyword If    ${condition}    Wait Until Keyword Succeeds    1x    2s    Press Keys    ${locator}    ${keys}
+    Run Keyword If    ${condition}    Wait Until Keyword Succeeds    1x    2s    Press Key    ${locator}    ${keys}
 
 Conditional Wait And Clear Element Text
     [Arguments]    ${condition}    ${locator}
@@ -68,7 +68,7 @@ Wait And Input Text with Delay    #require
 
 Wait And Press Keys    #require
     [Arguments]    ${locator}    ${keys}
-    Wait Until Keyword Succeeds    5x    2s    Press Keys    ${locator}    ${keys}
+    Wait Until Keyword Succeeds    5x    2s    Press Key    ${locator}    ${keys}
 
 Wait And Click Element     #require
     [Arguments]    ${locator}
@@ -89,11 +89,15 @@ Open browser web url	#ชื่อที่จะนำไปใช้
 
 
 
+
+
+
 Login dohome and click web art(Create)
     #Open browser web url    ${url_dohome}    headlesschrome
     Open browser web url    ${url_dohome}    chrome            
     Maximize Browser Window 
-    #Set Window Size    1920    1080
+    Set Window Position    1920    0
+    Set Window Size    1920    1080
     Wait until keyword succeeds    5x   2s    Wait Until Element Contains    //button[text()='เข้าสู่ระบบ']    เข้าสู่ระบบ      
     Wait until keyword succeeds    5x   2s    Click Element with Delay    //button[text()='เข้าสู่ระบบ']
     Wait until keyword succeeds    5x   2s    Wait Until Element Contains   //*[@class="text-2xl text-primary font-bold"]     เข้าสู่ระบบ
